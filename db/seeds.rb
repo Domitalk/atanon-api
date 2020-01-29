@@ -5,3 +5,56 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Post.destroy_all
+Reaction.destroy_all 
+
+p1 = Post.create(
+    comment: "History began July 4th, 1776. Anything before that was a mistake.",
+    image_url: "https://66.media.tumblr.com/ca727f22da4bf00acd4cb792f0658f57/tumblr_mngyjtuwv51qhptfbo1_1280.png"
+)
+p2 = Post.create(
+    image_url: "http://brunswicktimesrecord.demo.our-hometown.com/wp-content/uploads/images/2018-04-24/6p1.jpg",
+    comment: "When I eat, it is the food that is scared."
+)
+p3 = Post.create(
+    image_url: "https://townsquare.media/site/341/files/2012/09/cat2-e1347980878264.jpg?w=630&q=75",
+    comment: "Dear frozen yogurt, you are the celery of desserts. Be ice cream or be nothing. Zero stars."
+)
+p4 = Post.create(
+    image_url: "https://thefrisky.com/wp-content/uploads/2019/04/grumpy-cat-1-748x421.jpg",
+    comment: "I believe luck is a concept invented by the weak to explain their failures."
+)
+p5 = Post.create(
+    image_url: "https://cdn.pastemagazine.com/www/system/images/photo_albums/cats-that-look-like-ron-swanson/large/photo_30727_0-18.jpg?1384968217",
+    comment: "The government is a greedy piglet that suckles on a taxpayer's teat until they have sore, chapped nipples."
+)
+p6 = Post.create(
+    image_url: "https://66.media.tumblr.com/4b2aa53d5f3f06f6262c16d72a1e0d24/tumblr_mnbtcqCvFH1qhptfbo1_640.png",
+    comment: "There has never been a sadness that can’t been cured by breakfast food."
+)
+p7 = Post.create(
+    image_url: "https://images.squarespace-cdn.com/content/v1/55cc0e9ce4b09e646fec883d/1462330497348-H8QDE5UHTTW454R6BH5B/ke17ZwdGBToddI8pDm48kJG-lwx-ydacrGvWJ1E8uYN7gQa3H78H3Y0txjaiv_0f0RFAW16tgzDazO3NMD7c9vK_nQVZgijyDnglvVu8qqqsItIhYBC90LuJaYL0c21FmbLecD_NwfjqNxjfNDWHyHVe3BwRwwd-BktgihOOlCq4EN07C515vx5rnQ9h1Fid/image-asset.jpeg",
+    comment: "Son, there is no wrong way to consume alcohol."
+)
+p8 = Post.create(
+    image_url: "https://i.redd.it/22eayny0y6s31.jpg",
+    comment: "Honor: if you need it defined, you don't have it."
+)
+p9 = Post.create(
+    image_url: "https://cdn.pastemagazine.com/www/system/images/photo_albums/cats-that-look-like-ron-swanson/large/photo_30728_0-18.jpg?1384968217",
+    comment: "Creativity is for people with glasses who like to lie."
+)
+
+100.times do
+    Reaction.create(
+        post: Post.all.sample,
+        reaction_type: rand(1..4)
+    )
+end 
+
+# p = Post.create(
+#     image_url: "",
+#     comment: 
+# )
