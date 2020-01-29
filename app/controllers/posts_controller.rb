@@ -1,5 +1,11 @@
 class PostsController < ApplicationController 
 
+    def create 
+        @post = Post.create(post_params)
+        
+        render json: @post.to_json 
+    end 
+
     def show 
         @post = Post.find_by(id: params[:id])
         @shaped_post = {
@@ -89,6 +95,12 @@ class PostsController < ApplicationController
         # end 
 
         # render json: PostSerializer.new(@posts, options).serialized_json
+    end 
+
+    private 
+
+    def post_params 
+        params.permit(:image_url, :comment)
     end 
 
 end 
