@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_165332) do
 
   create_table "reactions", force: :cascade do |t|
     t.bigint "post_id", null: false
-    t.integer "reaction_type"
+    t.integer "rtype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_reactions_on_post_id"

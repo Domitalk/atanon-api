@@ -50,7 +50,7 @@ p9 = Post.create(
 100.times do
     Reaction.create(
         post: Post.all.sample,
-        reaction_type: rand(1..4)
+        rtype: rand(1..4)
     )
 end 
 
