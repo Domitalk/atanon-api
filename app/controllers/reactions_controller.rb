@@ -2,10 +2,10 @@ class ReactionsController < ApplicationController
 
     def create 
         # @post = Post.find_by(id: params[:id])
-        Reaction.create({
+        Reaction.create(
             reaction_params 
-        })
-        @post = Post.find_by(id: params[:id])
+        )
+        @post = Post.find_by(id: reaction_params[:post_id])
         @shaped_post = {
                 id: @post.id,
                 image_url: @post.image_url, 
@@ -15,6 +15,8 @@ class ReactionsController < ApplicationController
                 sad: 0,
                 angry: 0
         }
+
+        @reactions = Reaction.all 
 
         @reactions.each do |reaction|
             if (reaction.post_id === @post.id) 
@@ -32,7 +34,7 @@ class ReactionsController < ApplicationController
         end
 
         render json: @shaped_post.to_json 
-        
+
     end 
 
     private 
