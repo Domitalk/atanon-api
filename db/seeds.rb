@@ -69,14 +69,14 @@ uri = URI(url)
 
 ronUrl = "http://ron-swanson-quotes.herokuapp.com/v2/quotes"
 ronUri = URI(ronUrl)
-30.times do 
+60.times do 
     Post.create(
         image_url: JSON.parse(Net::HTTP.get(uri))[0]["url"],
         comment: JSON.parse(Net::HTTP.get(ronUri))[0]
     )
 end 
 
-200.times do
+300.times do
     Reaction.create(
         post: Post.all.sample,
         rtype: rand(1..4)
