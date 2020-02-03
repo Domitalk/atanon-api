@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
