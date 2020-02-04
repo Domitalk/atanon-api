@@ -10,9 +10,9 @@ class PostsController < ApplicationController
         @posts = Post.all 
         @reactions = Reaction.all 
         @organized = []
-        @posts.reverse()
+        @posts = @posts.reverse()
 
-        
+    
         @index = @posts.index(@posts.find{ |post| post.id === params[:id].to_i})
         @index = @index + 1
         @plus10 = @index + 9
@@ -85,7 +85,7 @@ class PostsController < ApplicationController
         @posts = Post.all 
         @reactions = Reaction.all 
 
-        @posts.reverse()
+        @posts = @posts.reverse()
         @posts = @posts[0..19]
 
         @organized = []
