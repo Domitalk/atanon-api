@@ -10,6 +10,9 @@ class PostsController < ApplicationController
         @posts = Post.all 
         @reactions = Reaction.all 
         @organized = []
+
+        @posts = @posts.sort_by { |post| post.created_at }
+
         @posts = @posts.reverse()
 
     
@@ -84,6 +87,8 @@ class PostsController < ApplicationController
     def index 
         @posts = Post.all 
         @reactions = Reaction.all 
+
+        @posts = @posts.sort_by { |post| post.created_at }
 
         @posts = @posts.reverse()
         @posts = @posts[0..19]
