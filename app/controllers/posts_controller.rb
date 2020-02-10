@@ -30,7 +30,9 @@ class PostsController < ApplicationController
                 heart: 0,
                 smile: 0, 
                 sad: 0,
-                angry: 0
+                angry: 0,
+                stags: {}
+
              }
              #add reactions to object which will be json'ed 
              post.reactions.each do |reaction|
@@ -47,7 +49,7 @@ class PostsController < ApplicationController
                 
             end
             post.post_stags.each do |post_stag|
-                if @shaped_post[:stags][post_stag.stag.stagname]
+                if (@shaped_post[:stags][post_stag.stag.stagname])
                     @shaped_post[:stags][post_stag.stag.stagname] += 1
                 else 
                     @shaped_post[:stags][post_stag.stag.stagname] = 1
