@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts 
   resources :reactions 
+  resources :stags 
+  resources :post_stags
 
 end

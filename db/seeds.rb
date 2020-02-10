@@ -8,11 +8,14 @@
 
 require 'net/http'
 require 'json'
+require 'faker'
 
 
 
 Post.destroy_all
 Reaction.destroy_all 
+Stag.destroy_all
+PostStag.destroy_all 
 
 # p1 = Post.create(
 #     comment: "History began July 4th, 1776. Anything before that was a mistake.",
@@ -69,6 +72,7 @@ uri = URI(url)
 
 ronUrl = "http://ron-swanson-quotes.herokuapp.com/v2/quotes"
 ronUri = URI(ronUrl)
+
 60.times do 
     Post.create(
         image_url: JSON.parse(Net::HTTP.get(uri))[0]["url"],
@@ -83,6 +87,18 @@ end
     )
 end 
 
+20.times do 
+    Stag.create(
+        stagname: Faker::Hipster.word
+    )
+end 
+
+300.times do 
+    PostStag.create(
+        post: Post.all.sample,
+        stag: Stag.all.sample
+    )
+end 
 # Post.create(
 #     image_url: JSON.parse(open(url).read)[0].url,
 #     comment: JSON.parse(open(ronUrl).read)

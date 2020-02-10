@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_165332) do
+ActiveRecord::Schema.define(version: 2020_02_10_161819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "post_stags", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "stag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_stags_on_post_id"
+    t.index ["stag_id"], name: "index_post_stags_on_stag_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "image_url"
@@ -30,4 +39,18 @@ ActiveRecord::Schema.define(version: 2020_01_29_165332) do
     t.index ["post_id"], name: "index_reactions_on_post_id"
   end
 
+  create_table "stags", force: :cascade do |t|
+    t.string "stagname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tagname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "post_stags", "posts"
+  add_foreign_key "post_stags", "stags"
 end
